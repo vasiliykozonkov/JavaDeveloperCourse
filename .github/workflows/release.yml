@@ -1,0 +1,56 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # Запускается при создании тега вида v1.0, v2.3 и т.д.
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Java
+        uses: actions/setup-java@v5
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+      
+      - name: Accept licenses
+        run: yes | sdkmanager --licenses || true
+      
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+      
+      - name: Build Release APK
+        run: ./gradlew assembleRelease
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            app/build/outputs/apk/release/app-release.apk
+            app/build/outputs/apk/debug/app-debug.apk
+          body: |
+            ## Что нового в ${{ github.ref_name }}:
+            
+            ### Новые функции:
+            - Добавлена тема про JVM, JRE, JDK
+            - Создано приложение-шпаргалка
+            
+            ### Исправления:
+            - Исправлены баги
+            
+            ---
+            *Автоматический релиз*
+          name: Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
