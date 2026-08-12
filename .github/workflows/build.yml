@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+<<<<<<< HEAD
       - name: Checkout code
         uses: actions/checkout@v4
       
@@ -17,6 +18,14 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'  # ← ВОТ ЭТОЙ СТРОКИ НЕ ХВАТАЛО!
+=======
+      - uses: actions/checkout@v4
+      
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+>>>>>>> a92a2c4b3deb63f5fc0c1af693ee09cfd7a19418
       
       - name: Make gradlew executable
         run: chmod +x gradlew
@@ -27,6 +36,11 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
+<<<<<<< HEAD
           name: my-app-debug-apk
           path: app/build/outputs/apk/debug/
           retention-days: 7
+=======
+          name: my-app
+          path: app/build/outputs/apk/debug/
+>>>>>>> a92a2c4b3deb63f5fc0c1af693ee09cfd7a19418
