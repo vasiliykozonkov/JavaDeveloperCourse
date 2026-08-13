@@ -9,6 +9,10 @@ jobs:
   build-and-release:
     runs-on: ubuntu-latest
     
+    # 👇 ЭТОТ БЛОК РЕШАЕТ ПРОБЛЕМУ 403 (Forbidden)
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -16,7 +20,7 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v5
         with:
-          java-version: '17'  # ← Изменено с 11 на 17
+          java-version: '17'
           distribution: 'temurin'
       
       - name: Set up Android SDK
@@ -34,21 +38,20 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
+          # 👇 МАСКИ *.apk НАЙДУТ ФАЙЛ, ДАЖЕ ЕСЛИ ИМЯ НЕМНОГО ОТЛИЧАЕТСЯ
           files: |
-            app/build/outputs/apk/release/app-release.apk
-            app/build/outputs/apk/debug/app-debug.apk
+            app/build/outputs/apk/release/*.apk
+            app/build/outputs/apk/debug/*.apk
           body: |
-            ## Что нового в ${{ github.ref_name }}:
+            ## 📦 Что нового в версии ${{ github.ref_name }}:
             
-            ### Новые функции:
-            - Добавлена тема про JVM, JRE, JDK
-            - Создано приложение-шпаргалка
-            
-            ### Исправления:
-            - Исправлены баги
+            ### Обновления:
+            - Добавлен Модуль 2 (Исключения, I/O, Коллекции)
+            - Обновлен Gradle до 7.5 и Android Gradle Plugin до 7.4.2
+            - Обновлен targetSdkVersion до 33
             
             ---
-            *Автоматический релиз*
+            *Автоматический релиз создан GitHub Actions*
           name: Release ${{ github.ref_name }}
           draft: false
           prerelease: false
