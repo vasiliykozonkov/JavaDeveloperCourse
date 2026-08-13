@@ -6,54 +6,36 @@ on:
       - 'v*'
 
 jobs:
-  build-and-release:
+  build:
     runs-on: ubuntu-latest
-    
-    # 👇 ЭТОТ БЛОК РЕШАЕТ ПРОБЛЕМУ 403 (Forbidden)
     permissions:
       contents: write
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
-      - name: Set up Java
-        uses: actions/setup-java@v5
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
-      
-      - name: Set up Android SDK
+
+      - name: Setup Android SDK
         uses: android-actions/setup-android@v3
-      
-      - name: Accept licenses
-        run: yes | sdkmanager --licenses || true
-      
-      - name: Make gradlew executable
+
+      - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      
+
       - name: Build Release APK
-        run: ./gradlew assembleRelease
-      
-      - name: Create Release
+        run: ./gradlew assembleRelease --stacktrace
+
+      - name: Upload Release APK
         uses: softprops/action-gh-release@v1
         with:
-          # 👇 МАСКИ *.apk НАЙДУТ ФАЙЛ, ДАЖЕ ЕСЛИ ИМЯ НЕМНОГО ОТЛИЧАЕТСЯ
-          files: |
-            app/build/outputs/apk/release/*.apk
-            app/build/outputs/apk/debug/*.apk
+          files: app/build/outputs/apk/release/app-release.apk
           body: |
-            ## 📦 Что нового в версии ${{ github.ref_name }}:
-            
-            ### Обновления:
-            - Добавлен Модуль 2 (Исключения, I/O, Коллекции)
-            - Обновлен Gradle до 7.5 и Android Gradle Plugin до 7.4.2
-            - Обновлен targetSdkVersion до 33
-            
-            ---
-            *Автоматический релиз создан GitHub Actions*
-          name: Release ${{ github.ref_name }}
-          draft: false
-          prerelease: false
+            Автоматическая сборка релиза ${{ github.ref_name }}. 
+            Подписанный и готовый к установке APK.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
