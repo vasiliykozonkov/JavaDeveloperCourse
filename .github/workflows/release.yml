@@ -28,12 +28,14 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Release APK
-        run: ./gradlew assembleRelease --stacktrace
+        run: ./gradlew assembleRelease
 
       - name: Upload Release APK
         uses: softprops/action-gh-release@v1
         with:
-          files: app/build/outputs/apk/release/app-release.apk
+          # МАСКА *.apk найдёт файл, даже если имя немного отличается, 
+          # точно так же, как это делает твой рабочий build.yml
+          files: app/build/outputs/apk/release/*.apk
           body: |
             Автоматическая сборка релиза ${{ github.ref_name }}. 
             Подписанный и готовый к установке APK.
