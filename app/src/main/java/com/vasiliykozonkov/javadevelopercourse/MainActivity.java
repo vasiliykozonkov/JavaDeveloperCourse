@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
         "27. Оболочки примитивных типов",
         "28. String",
         "29. String pool",
-        "30. StringBuilder, StringBuffer"
+        "30. StringBuilder, StringBuffer",
+		"31. Git — Система контроля версий"
     };
 
     private String[] module2TopicsArray = {
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             topicView.setTextColor(android.graphics.Color.parseColor("#333333"));
             topicView.setPadding(16, 12, 16, 12);
 
-            final int index = 30 + i;  // СМЕЩЕНИЕ! Модуль 2 начинается с индекса 30
+            final int index = 31 + i;  // СМЕЩЕНИЕ! Модуль 2 начинается с индекса 30
             topicView.setOnClickListener(v -> {
                 Intent intent = new Intent(MainActivity.this, TopicActivity.class);
                 intent.putExtra("topic_index", index);

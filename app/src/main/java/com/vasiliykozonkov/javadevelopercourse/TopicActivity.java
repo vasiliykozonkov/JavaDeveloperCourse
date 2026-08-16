@@ -1270,13 +1270,173 @@ public class TopicActivity extends AppCompatActivity {
                 );
                 break;
 				
-				
+				case 30: // Git - Система контроля версий
+    tvTitle.setText("Git — Система контроля версий");
+    tvTheory.setText(
+        "**Git** — система для отслеживания изменений в коде.\n\n" +
+        "**Зачем нужен:**\n" +
+        "• Сохранять версии (коммиты)\n" +
+        "• Откатываться к рабочим версиям\n" +
+        "• Работать в команде\n" +
+        "• Создавать релизы (теги)\n\n" +
+        "**Основные понятия:**\n" +
+        "• **Репозиторий** — папка с историей\n" +
+        "• **Коммит** — сохранение состояния\n" +
+        "• **Ветка** — параллельная разработка\n" +
+        "• **Тег** — закладка версии (v1.0)\n" +
+        "• **GitHub** — облачное хранилище\n\n" +
+        "**Ежедневный workflow:**\n" +
+        "1. git status — проверить статус\n" +
+        "2. git add . — добавить файлы\n" +
+        "3. git commit -m \"...\" — сохранить\n" +
+        "4. git push — отправить на GitHub"
+    );
+    tvCode.setText(
+        "=== ОСНОВНЫЕ КОМАНДЫ GIT ===\n\n" +
+        
+        "1. НАСТРОЙКА (один раз):\n" +
+        "git config --global user.name \"Имя\"\n" +
+        "git config --global user.email \"email@test.com\"\n\n" +
+        
+        "2. СОЗДАНИЕ РЕПОЗИТОРИЯ:\n" +
+        "git init                    # Инициализировать репозиторий\n" +
+        "git clone <URL>             # Скачать репозиторий\n\n" +
+        
+        "3. ЕЖЕДНЕВНАЯ РАБОТА:\n" +
+        "git status                  # Показать статус\n" +
+        "git add .                   # Добавить все файлы\n" +
+        "git add Main.java           # Добавить конкретный файл\n" +
+        "git commit -m \"Сообщение\"   # Сохранить изменения\n" +
+        "git commit --amend          # Исправить последний коммит\n" +
+        "git push origin master      # Отправить на GitHub\n" +
+        "git pull origin master      # Скачать с GitHub\n\n" +
+        
+        "4. РАБОТА С ВЕТКАМИ:\n" +
+        "git branch                  # Показать ветки\n" +
+        "git branch feature          # Создать ветку\n" +
+        "git checkout feature        # Переключиться на ветку\n" +
+        "git checkout -b feature     # Создать И переключиться\n" +
+        "git switch feature          # Переключиться (новая команда)\n" +
+        "git switch -c feature       # Создать и переключиться\n" +
+        "git merge feature           # Влить ветку в текущую\n" +
+        "git branch -d feature       # Удалить ветку\n" +
+        "git checkout -b hotfix      # Создать hotfix ветку\n\n" +
+        
+        "5. РАБОТА С ТЕГАМИ:\n" +
+        "git tag                     # Показать теги\n" +
+        "git tag v1.0                # Создать тег\n" +
+        "git tag -a v1.0 -m \"v1.0\"   # Создать аннотированный тег\n" +
+        "git push origin v1.0        # Отправить тег\n" +
+        "git push --tags             # Отправить все теги\n" +
+        "git tag -d v1.0             # Удалить тег локально\n" +
+        "git push --delete origin v1.0  # Удалить тег на GitHub\n\n" +
+        
+        "6. ПРОСМОТР ИСТОРИИ:\n" +
+        "git log                     # Полная история\n" +
+        "git log --oneline           # Краткая история\n" +
+        "git log -5                  # Последние 5 коммитов\n" +
+        "git log --graph             # История с графиком\n" +
+        "git log --all --decorate    # Все ветки и теги\n" +
+        "git show abc123             # Показать конкретный коммит\n" +
+        "git diff                    # Изменения (до git add)\n" +
+        "git diff --staged           # Изменения (после git add)\n\n" +
+        
+        "7. ОТМЕНА ИЗМЕНЕНИЙ:\n" +
+        "git restore file            # Отменить изменения в файле\n" +
+        "git restore --staged file   # Убрать файл из индекса\n" +
+        "git reset --soft HEAD~1     # Отменить коммит (сохранить изменения)\n" +
+        "git reset --mixed HEAD~1    # Отменить коммит и add\n" +
+        "git reset --hard HEAD~1     # Полностью отменить (ОПАСНО!)\n" +
+        "git revert abc123           # Отменить коммит новым коммитом\n" +
+        "git clean -fd               # Удалить неотслеживаемые файлы\n\n" +
+        
+        "8. ВРЕМЕННОЕ СОХРАНЕНИЕ:\n" +
+        "git stash                   # Временно сохранить изменения\n" +
+        "git stash list              # Показать сохранённые\n" +
+        "git stash pop               # Вернуть изменения\n" +
+        "git stash apply             # Применить без удаления\n" +
+        "git stash drop              # Удалить сохранение\n\n" +
+        
+        "9. СИНХРОНИЗАЦИЯ С GitHub:\n" +
+        "git fetch                   # Скачать изменения (не сливать)\n" +
+        "git pull                    # Скачать и слить (fetch + merge)\n" +
+        "git pull --rebase           # Скачать и переместить коммиты\n" +
+        "git push -u origin master   # Отправить и установить связь\n" +
+        "git remote -v               # Показать удалённые репозитории\n" +
+        "git remote add origin <URL> # Добавить удалённый репозиторий\n\n" +
+        
+        "10. ПОИСК И АНАЛИЗ:\n" +
+        "git log --grep=\"баг\"       # Найти коммит по сообщению\n" +
+        "git log -S\"текст\"           # Найти коммит, где изменился текст\n" +
+        "git blame file              # Кто последним менял каждую строку\n" +
+        "git shortlog                # Статистика по авторам\n\n" +
+        
+        "11. .GITIGNORE:\n" +
+        "echo \"*.class\" >> .gitignore\n" +
+        "echo \"target/\" >> .gitignore\n" +
+        "git add .gitignore\n" +
+        "git commit -m \"Add .gitignore\""
+    );
+    tvOutput.setText(
+        "$ git status\n" +
+        "On branch master\n" +
+        "Changes not staged:\n" +
+        "  modified:   Main.java\n" +
+        "Untracked files:\n" +
+        "  Employee.java\n\n" +
+        
+        "$ git log --oneline\n" +
+        "abc1234 Добавил Git тему\n" +
+        "def5678 Исправил баг\n" +
+        "ghi9012 Начальный коммит\n\n" +
+        
+        "$ git branch -a\n" +
+        "* master\n" +
+        "  feature-login\n" +
+        "  remotes/origin/master\n\n" +
+        
+        "$ git tag\n" +
+        "v1.0\n" +
+        "v1.1\n" +
+        "v1.2 (Latest)\n\n" +
+        
+        "$ git checkout -b feature-new\n" +
+        "Switched to a new branch 'feature-new'\n\n" +
+        
+        "$ git stash list\n" +
+        "stash@{0}: WIP on master: abc1234 Временные изменения"
+    );
+    tvAnalogy.setText(
+        "АНАЛОГИИ:\n\n" +
+        "• **git init** = Купить блокнот для записей 📓\n" +
+        "• **git clone** = Скопировать чужую тетрадь 📋\n" +
+        "• **git add** = Положить работу в портфель 💼\n" +
+        "• **git commit** = Сфотографировать результат 📸\n" +
+        "• **git push** = Отправить работу учителю 📮\n" +
+        "• **git pull** = Скачать работу одноклассника 📥\n" +
+        "• **git branch** = Начать черновик ✍️\n" +
+        "• **git checkout -b** = Начать черновик и сразу перейти к нему 🚀\n" +
+        "• **git merge** = Вклеить черновик в основную тетрадь 📎\n" +
+        "• **git tag** = Поставить закладку на странице 🔖\n" +
+        "• **git stash** = Убрать в ящик на время 🗄️\n" +
+        "• **git revert** = Написать исправление поверх ошибки ✏️\n" +
+        "• **git reset** = Порвать страницу (ОПАСНО!) ️\n" +
+        "• **.gitignore** = Чёрный список файлов 🚫\n\n" +
+        
+        "**ВАЖНО ЗАПОМНИТЬ:**\n" +
+        "✅ git checkout -b name = создать ветку И переключиться\n" +
+        "✅ git commit делай каждые 30-60 минут\n" +
+        "✅ Пиши понятные сообщения в коммитах!\n" +
+        "✅ Теги (v1.0) запускают GitHub Actions\n" +
+        "✅ Не коммитьте .class, target/, .settings/"
+    );
+    break;
 				
 				
 				
 				// Исключения
                 
-			case 30:
+			case 31:
     tvTitle.setText("Исключения");
     tvTheory.setText(
         "**Исключение (Exception)** — событие, нарушающее нормальный ход программы.\n\n" +
@@ -1305,7 +1465,7 @@ public class TopicActivity extends AppCompatActivity {
     );
     break;
 
-case 31: // Иерархия исключений
+case 32: // Иерархия исключений
     tvTitle.setText("Иерархия исключений");
     tvTheory.setText(
         "Все исключения наследуются от **Throwable**:\n\n" +
@@ -1346,7 +1506,7 @@ case 31: // Иерархия исключений
     );
     break;
 
-case 32: // Способы обработки исключений
+case 33: // Способы обработки исключений
     tvTitle.setText("Способы обработки исключений");
     tvTheory.setText(
         "Два способа обработки:\n\n" +
@@ -1384,7 +1544,7 @@ case 32: // Способы обработки исключений
     );
     break;
 
-case 33: // try с ресурсами
+case 34: // try с ресурсами
     tvTitle.setText("try с ресурсами");
     tvTheory.setText(
         "**try-with-resources** — автоматическое закрытие ресурсов (Java 7+).\n\n" +
@@ -1425,7 +1585,7 @@ case 33: // try с ресурсами
     );
     break;
 
-case 34: // Ввод-вывод
+case 35: // Ввод-вывод
     tvTitle.setText("Ввод-вывод (I/O)");
     tvTheory.setText(
         "**I/O** — работа с данными: файлы, консоль, сеть.\n\n" +
@@ -1469,7 +1629,7 @@ case 34: // Ввод-вывод
     );
     break;
 
-case 35: // Классы потоков ввода-вывода
+case 36: // Классы потоков ввода-вывода
     tvTitle.setText("Классы потоков ввода-вывода");
     tvTheory.setText(
         "**Основные классы I/O:**\n\n" +
@@ -1510,7 +1670,7 @@ case 35: // Классы потоков ввода-вывода
     );
     break;
 
-case 36: // Правила работы с потоками I/O
+case 37: // Правила работы с потоками I/O
     tvTitle.setText("Правила работы с потоками I/O");
     tvTheory.setText(
         "**Золотые правила:**\n\n" +
@@ -1551,7 +1711,7 @@ case 36: // Правила работы с потоками I/O
     );
     break;
 
-case 37: // Сериализация
+case 38: // Сериализация
     tvTitle.setText("Сериализация");
     tvTheory.setText(
         "**Сериализация** — превращение объекта в поток байтов для сохранения или передачи.\n\n" +
@@ -1589,7 +1749,7 @@ case 37: // Сериализация
     );
     break;
 
-case 38: // Алгоритмы
+case 39: // Алгоритмы
     tvTitle.setText("Алгоритмы");
     tvTheory.setText(
         "**Алгоритм** — последовательность шагов для решения задачи.\n\n" +
@@ -1628,7 +1788,7 @@ case 38: // Алгоритмы
     );
     break;
 
-case 39: // Big O notation
+case 40: // Big O notation
     tvTitle.setText("Big O notation");
     tvTheory.setText(
         "**Big O** — как растёт время работы с увеличением данных.\n\n" +
@@ -1670,7 +1830,7 @@ case 39: // Big O notation
     );
     break;
 
-case 40: // Виды сортировок
+case 41: // Виды сортировок
     tvTitle.setText("Виды сортировок");
     tvTheory.setText(
         "**Простые (O(n²)):**\n" +
@@ -1713,7 +1873,7 @@ case 40: // Виды сортировок
     );
     break;
 
-case 41: // Generics
+case 42: // Generics
     tvTitle.setText("Generics (Обобщения)");
     tvTheory.setText(
         "**Generics** — параметризация типов. Код работает с разными типами безопасно.\n\n" +
@@ -1756,7 +1916,7 @@ case 41: // Generics
     );
     break;
 
-case 42: // Коллекции
+case 43: // Коллекции
     tvTitle.setText("Коллекции");
     tvTheory.setText(
         "**Коллекции** — структуры для хранения групп объектов (java.util.*).\n\n" +
@@ -1795,7 +1955,7 @@ case 42: // Коллекции
     );
     break;
 
-case 43: // Иерархия коллекций
+case 44: // Иерархия коллекций
     tvTitle.setText("Иерархия коллекций");
     tvTheory.setText(
         "**Интерфейсы:**\n\n" +
@@ -1840,7 +2000,7 @@ case 43: // Иерархия коллекций
     );
     break;
 
-case 44: // List
+case 45: // List
     tvTitle.setText("List (Список)");
     tvTheory.setText(
         "**List** — упорядоченная коллекция, допускает дубликаты.\n\n" +
@@ -1879,7 +2039,7 @@ case 44: // List
     );
     break;
 
-case 45: // Set
+case 46: // Set
     tvTitle.setText("Set (Множество)");
     tvTheory.setText(
         "**Set** — коллекция БЕЗ дубликатов.\n\n" +
@@ -1918,7 +2078,7 @@ case 45: // Set
     );
     break;
 
-case 46: // Map
+case 47: // Map
     tvTitle.setText("Map (Словарь)");
     tvTheory.setText(
         "**Map** — пары ключ-значение. Ключи уникальны!\n\n" +
@@ -1956,7 +2116,7 @@ case 46: // Map
     );
     break;
 
-case 47: // Временная сложность коллекций
+case 48: // Временная сложность коллекций
     tvTitle.setText("Временная сложность коллекций");
     tvTheory.setText(
         "**Сравнение:**\n\n" +
@@ -1999,7 +2159,7 @@ case 47: // Временная сложность коллекций
     );
     break;
 
-case 48: // Неизменяемые коллекции
+case 49: // Неизменяемые коллекции
     tvTitle.setText("Неизменяемые коллекции");
     tvTheory.setText(
         "**Immutable коллекции** — нельзя добавить, удалить или изменить после создания.\n\n" +
@@ -2040,7 +2200,7 @@ case 48: // Неизменяемые коллекции
     );
     break;
 
-case 49: // LinkedHashMap, TreeMap
+case 50: // LinkedHashMap, TreeMap
     tvTitle.setText("LinkedHashMap и TreeMap");
     tvTheory.setText(
         "**LinkedHashMap** — HashMap + порядок вставки.\n" +
@@ -2080,7 +2240,7 @@ case 49: // LinkedHashMap, TreeMap
     );
     break;
 
-case 50: // Comparable и Comparator
+case 51: // Comparable и Comparator
     tvTitle.setText("Comparable и Comparator");
     tvTheory.setText(
         "Два интерфейса для сортировки:\n\n" +
@@ -2121,7 +2281,7 @@ case 50: // Comparable и Comparator
     );
     break;
 
-case 51: // Лямбды и Stream API
+case 52: // Лямбды и Stream API
     tvTitle.setText("Лямбды и Stream API");
     tvTheory.setText(
         "**Лямбда** — короткая запись анонимной функции.\n" +
@@ -2165,6 +2325,8 @@ case 51: // Лямбды и Stream API
         "• **collect()** = сложили в коробку готовое"
     );
     break;
+	
+	
 	
             default:
                 tvTitle.setText("Тема в разработке");
