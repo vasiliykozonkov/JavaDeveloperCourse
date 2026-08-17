@@ -27,22 +27,15 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Build Release APK
-        run: ./gradlew assembleRelease
-
-      - name: Find APK files
-        run: |
-          echo "=== Ищем APK файлы ==="
-          find . -name "*.apk" -type f
-          echo "=== Конец поиска ==="
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug
 
       - name: Upload Release APK
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            app/build/outputs/apk/release/*.apk
+          files: app/build/outputs/apk/debug/app-debug.apk
           body: |
             Сборка ${{ github.ref_name }}. 
-            Автоматическая сборка с GitHub Actions.
+            Debug версия для тестирования.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
