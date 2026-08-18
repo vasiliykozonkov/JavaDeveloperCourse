@@ -94,9 +94,9 @@ jobs:
             • LinkedHashMap, TreeMap
             • Интерфейсы Comparable и Comparator
             • Лямбда выражения, функциональные интерфейсы, Stream API
-            
+			        
             Модуль 3
-			• SOLID
+            • SOLID
             • Паттерны проектирования.
             • Git
             • push, pull, fetch
@@ -125,6 +125,6 @@ jobs:
             • Разбиение на команды
             • Работа над общим проектом
             • Презентация проекта
-			
+            
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
