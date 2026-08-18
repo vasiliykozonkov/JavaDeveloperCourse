@@ -94,5 +94,37 @@ jobs:
             • LinkedHashMap, TreeMap
             • Интерфейсы Comparable и Comparator
             • Лямбда выражения, функциональные интерфейсы, Stream API
+			
+            Модуль 3
+            • SOLID
+            • Паттерны проектирования.
+            • Git
+            • push, pull, fetch
+            • 2 варианта слияния веток(merge, rebase)
+            • cherry pick, squash
+            • patch, stash
+            • reset, revert
+            • Сборщики проектов(Gradle, Maven)
+            • Этапы сборки в Maven
+            • Где на локальной машине хранятся скачанные зависимости
+
+            Модуль 4
+            • Многопоточность
+            • Способы создания потоков
+            • Виды состояния потоков
+            • Ключевое слово volatile
+            • Проблемы многопоточных приложений: состояние гонки,  дедлоки и лайфлоки
+            • Пакет java.util.concurrent
+            • Atomic
+            • Lock
+            • Executors
+            • Future, CompletableFuture
+            • синхронизаторы 
+
+            Модуль 5
+            • Разбиение на команды
+            • Работа над общим проектом
+            • Презентация проекта
+			
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
