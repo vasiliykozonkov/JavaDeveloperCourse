@@ -25,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout module4TopicsLayout;
     private ImageView module4Arrow;
     private boolean module4Expanded = false;
+	
+	private LinearLayout module5TopicsLayout;
+    private ImageView module5Arrow;
+    private boolean module5Expanded = false;
 
     private String[] module1TopicsArray = {
         "1. Какие языки программирования бывают",
@@ -111,6 +115,12 @@ public class MainActivity extends AppCompatActivity {
     "9. Executors",
     "10. Future и CompletableFuture",
     "11. Синхронизаторы"
+};
+
+private String[] module5TopicsArray = {
+    "1. Разбиение на команды",
+    "2. Работа над общим проектом",
+    "3. Презентация проекта"
 };
 
     @Override
@@ -249,6 +259,39 @@ findViewById(R.id.module4Header).setOnClickListener(v -> {
     }
     module4Expanded = !module4Expanded;
 });
+
+// Инициализация Модуля 5
+module5TopicsLayout = findViewById(R.id.module5Topics);
+module5Arrow = findViewById(R.id.module5Arrow);
+
+for (int i = 0; i < module5TopicsArray.length; i++) {
+    TextView topicView = new TextView(this);
+    topicView.setText(module5TopicsArray[i]);
+    topicView.setTextSize(16);
+    topicView.setTextColor(android.graphics.Color.parseColor("#333333"));
+    topicView.setPadding(16, 12, 16, 12);
+    
+    final int index = 75 + i;  // Смещение! Модуль 5 начинается с индекса 75
+    topicView.setOnClickListener(v -> {
+        Intent intent = new Intent(MainActivity.this, TopicActivity.class);
+        intent.putExtra("topic_index", index);
+        startActivity(intent);
+    });
+    
+    module5TopicsLayout.addView(topicView);
+}
+
+findViewById(R.id.module5Header).setOnClickListener(v -> {
+    if (module5Expanded) {
+        module5TopicsLayout.setVisibility(View.GONE);
+        module5Arrow.setRotation(0);
+    } else {
+        module5TopicsLayout.setVisibility(View.VISIBLE);
+        module5Arrow.setRotation(180);
+    }
+    module5Expanded = !module5Expanded;
+});
+
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Java Developer Course");

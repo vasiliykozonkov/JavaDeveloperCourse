@@ -190,5 +190,50 @@
         android:paddingBottom="16dp"/>
 </LinearLayout>
 
+<!-- Модуль 5 -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:layout_marginBottom="12dp"
+    android:elevation="2dp">
+
+    <LinearLayout
+        android:id="@+id/module5Header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Модуль 5 (Практика)"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#1A1A1A"/>
+
+        <ImageView
+            android:id="@+id/module5Arrow"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/arrow_down_float"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/module5Topics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"/>
+</LinearLayout>
+
     </LinearLayout>
 </ScrollView>
