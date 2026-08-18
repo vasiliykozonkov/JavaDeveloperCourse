@@ -2326,6 +2326,1370 @@ case 52: // Лямбды и Stream API
     );
     break;
 	
+	case 53: // SOLID
+    tvTitle.setText("SOLID принципы");
+    tvTheory.setText(
+        "**SOLID** — 5 принципов ООП для хорошего кода:\n\n" +
+        "**S** — Single Responsibility (Единая ответственность)\n" +
+        "• Класс должен иметь только одну причину для изменения\n" +
+        "• Один класс = одна задача\n\n" +
+        "**O** — Open/Closed (Открыт/Закрыт)\n" +
+        "• Открыт для расширения, закрыт для модификации\n" +
+        "• Добавляем функционал через наследование\n\n" +
+        "**L** — Liskov Substitution (Подстановка Лисков)\n" +
+        "• Объекты дочерних классов должны заменять родительские\n" +
+        "• Наследник не должен ломать поведение родителя\n\n" +
+        "**I** — Interface Segregation (Разделение интерфейсов)\n" +
+        "• Много маленьких интерфейсов лучше одного большого\n" +
+        "• Класс не должен реализовывать ненужные методы\n\n" +
+        "**D** — Dependency Inversion (Инверсия зависимостей)\n" +
+        "• Зависеть от абстракций, а не от конкретных классов\n" +
+        "• Использовать интерфейсы вместо реализаций"
+    );
+    tvCode.setText(
+        "// S — Single Responsibility\n" +
+        "class User { private String name; }\n" +
+        "class UserRepository { void save(User u) { } }\n\n" +
+        "// O — Open/Closed\n" +
+        "interface Shape { double area(); }\n" +
+        "class Circle implements Shape { }\n" +
+        "class Square implements Shape { }\n\n" +
+        "// D — Dependency Inversion\n" +
+        "interface Database { void save(String data); }\n" +
+        "class MySQL implements Database { }\n" +
+        "class PostgreSQL implements Database { }"
+    );
+    tvOutput.setText(
+        "Преимущества SOLID:\n" +
+        "✅ Код легче понимать\n" +
+        "✅ Легче тестировать\n" +
+        "✅ Легче поддерживать\n" +
+        "✅ Меньше багов при изменениях"
+    );
+    tvAnalogy.setText(
+        "Аналогии:\n" +
+        "• **S** = Один нож = одна задача \n" +
+        "• **O** = Розетка (включаешь новый прибор без переделки проводки) 🔌\n" +
+        "• **L** = Пульт от ТВ работает и от DVD 📺\n" +
+        "• **I** = Меню ресторана (разделы: напитки, еда) 📋\n" +
+        "• **D** = USB-разъём (любой девайс подходит) "
+    );
+    break;
+
+case 54: // Паттерны проектирования
+    tvTitle.setText("Паттерны проектирования");
+    tvTheory.setText(
+        "**Паттерн** — типовое решение распространённой проблемы\n\n" +
+        "**Порождающие:**\n" +
+        "• **Singleton** — только один экземпляр класса\n" +
+        "• **Factory** — создание объектов через фабрику\n" +
+        "• **Builder** — пошаговое создание сложных объектов\n\n" +
+        "**Структурные:**\n" +
+        "• **Adapter** — адаптер несовместимых интерфейсов\n" +
+        "• **Decorator** — добавление функциональности\n" +
+        "• **Facade** — простой интерфейс к сложной системе\n\n" +
+        "**Поведенческие:**\n" +
+        "• **Observer** — подписка на изменения\n" +
+        "• **Strategy** — семейство алгоритмов\n" +
+        "• **Command** — инкапсуляция запроса как объекта"
+    );
+    tvCode.setText(
+        "// Singleton\n" +
+        "class Database {\n" +
+        "    private static Database instance;\n" +
+        "    private Database() { }\n" +
+        "    public static Database getInstance() {\n" +
+        "        if (instance == null)\n" +
+        "            instance = new Database();\n" +
+        "        return instance;\n" +
+        "    }\n" +
+        "}\n\n" +
+        "// Factory\n" +
+        "interface Animal { void speak(); }\n" +
+        "class Dog implements Animal { }\n" +
+        "class Cat implements Animal { }\n" +
+        "class AnimalFactory {\n" +
+        "    Animal create(String type) {\n" +
+        "        if (type.equals(\"dog\")) return new Dog();\n" +
+        "        return new Cat();\n" +
+        "    }\n" +
+        "}"
+    );
+    tvOutput.setText(
+        "Database db1 = Database.getInstance();\n" +
+        "Database db2 = Database.getInstance();\n" +
+        "db1 == db2  // true! Один объект\n\n" +
+        "AnimalFactory f = new AnimalFactory();\n" +
+        "Animal dog = f.create(\"dog\");  // Dog"
+    );
+    tvAnalogy.setText(
+        "Аналогии:\n" +
+        "• **Singleton** = Президент страны (только один) 👔\n" +
+        "• **Factory** = Ресторан (меню создаёт блюда) 🍽️\n" +
+        "• **Builder** = Сборка компьютера по частям 💻\n" +
+        "• **Adapter** = Переходник для розетки \n" +
+        "• **Observer** = Подписка на YouTube-канал 🔔"
+    );
+    break;
+
+case 55: // Git углублённо
+    tvTitle.setText("Git — углублённо");
+    tvTheory.setText(
+        "**Git** — система контроля версий\n\n" +
+        "**Основные понятия:**\n" +
+        "• **Репозиторий** — папка с историей\n" +
+        "• **Коммит** — сохранение состояния\n" +
+        "• **Ветка** — параллельная разработка\n" +
+        "• **Тег** — закладка версии (v1.0)\n" +
+        "• **HEAD** — указатель на текущий коммит\n\n" +
+        "**Ежедневный workflow:**\n" +
+        "1. git status — проверить статус\n" +
+        "2. git add . — добавить файлы\n" +
+        "3. git commit -m \"...\" — сохранить\n" +
+        "4. git push — отправить на GitHub\n\n" +
+        "**Важно:**\n" +
+        "• Коммить каждые 30-60 минут\n" +
+        "• Понятные сообщения коммитов\n" +
+        "• Не коммитить .class, target/, .settings/"
+    );
+    tvCode.setText(
+        "# Настройка (один раз)\n" +
+        "git config --global user.name \"Имя\"\n" +
+        "git config --global user.email \"email@test.com\"\n\n" +
+        "# Создание репозитория\n" +
+        "git init                    # Инициализировать\n" +
+        "git clone <URL>             # Скачать\n\n" +
+        "# Ежедневная работа\n" +
+        "git status                  # Статус\n" +
+        "git add .                   # Добавить все\n" +
+        "git commit -m \"Сообщение\"   # Сохранить\n" +
+        "git push origin master      # Отправить\n" +
+        "git pull origin master      # Скачать"
+    );
+    tvOutput.setText(
+        "$ git status\n" +
+        "On branch master\n" +
+        "Changes not staged:\n" +
+        "  modified:   Main.java\n\n" +
+        "$ git log --oneline\n" +
+        "abc1234 Добавил Git тему\n" +
+        "def5678 Исправил баг"
+    );
+    tvAnalogy.setText(
+        "Аналогии:\n" +
+        "• **Git** = Машина времени для кода ⏰\n" +
+        "• **Коммит** = Сохранение в игре \n" +
+        "• **Ветка** = Черновик главы книги ✍️\n" +
+        "• **Тег** = Закладка в книге 🔖\n" +
+        "• **GitHub** = Google Drive для кода ☁️"
+    );
+    break;
+
+case 56: // push, pull, fetch
+    tvTitle.setText("push, pull, fetch");
+    tvTheory.setText(
+        "**Три команды для работы с удалённым репозиторием**\n\n" +
+        "**git push** — отправить ваши коммиты на GitHub\n" +
+        "• Загружает изменения из локального репозитория\n" +
+        "• Другие разработчики видят ваши изменения\n\n" +
+        "**git pull** — скачать изменения с GitHub и сразу слить\n" +
+        "• Это комбинация fetch + merge\n" +
+        "• Получаете последние изменения коллег\n\n" +
+        "**git fetch** — только скачать изменения, НЕ сливать\n" +
+        "• Безопаснее, чем pull\n" +
+        "• Можно сначала посмотреть, что изменилось\n\n" +
+        "**Разница:**\n" +
+        "• pull = fetch + merge (сразу сливает)\n" +
+        "• fetch = только скачать (вы решаете, что делать)"
+    );
+    tvCode.setText(
+        "// Отправить изменения на GitHub\n" +
+        "git push origin master\n\n" +
+        "// Скачать и слить изменения\n" +
+        "git pull origin master\n\n" +
+        "// Только скачать (без слияния)\n" +
+        "git fetch origin\n\n" +
+        "// Посмотреть, что скачалось\n" +
+        "git log origin/master\n\n" +
+        "// Слить вручную после fetch\n" +
+        "git merge origin/master\n\n" +
+        "// Pull с rebase (более чистая история)\n" +
+        "git pull --rebase origin master"
+    );
+    tvOutput.setText(
+        "$ git push origin master\n" +
+        "To github.com:user/repo.git\n" +
+        "   abc1234..def5678  master -> master\n\n" +
+        "$ git fetch origin\n" +
+        "From github.com:user/repo\n" +
+        "   abc1234..ghi9012  master -> origin/master\n\n" +
+        "$ git pull origin master\n" +
+        "Already up to date."
+    );
+    tvAnalogy.setText(
+        "Аналогии:\n" +
+        "• **push** = Отправить письмо по почте 📮\n" +
+        "• **pull** = Скачать обновления приложения 📥\n" +
+        "• **fetch** = Посмотреть, есть ли новые письма, но не открывать 📬\n\n" +
+        "**Когда что использовать:**\n" +
+        "✅ push — после коммита\n" +
+        "✅ pull — утром, перед началом работы\n" +
+        "✅ fetch — когда хотите сначала посмотреть изменения"
+    );
+    break;
+
+case 57: // merge и rebase
+    tvTitle.setText("Слияние веток: merge и rebase");
+    tvTheory.setText(
+        "**Два способа объединить ветки**\n\n" +
+        "**git merge** — создаёт коммит слияния\n" +
+        "• Сохраняет полную историю\n" +
+        "• Видно, когда и что сливалось\n" +
+        "• История выглядит как граф с ветками\n\n" +
+        "**git rebase** — перемещает коммиты на другую ветку\n" +
+        "• Делает историю линейной\n" +
+        "• Убирает \"шум\" от коммитов слияния\n" +
+        "• Переписывает историю (опасно!)\n\n" +
+        "**Когда что использовать:**\n" +
+        "• merge — для слияния feature-веток в main\n" +
+        "• rebase — для обновления feature-ветки\n\n" +
+        "**Правило:**\n" +
+        "Никогда не делайте rebase опубликованных коммитов!"
+    );
+    tvCode.setText(
+        "// MERGE\n" +
+        "git checkout main\n" +
+        "git merge feature-login\n" +
+        "// Создаёт коммит слияния\n\n" +
+        "// REBASE\n" +
+        "git checkout feature-login\n" +
+        "git rebase main\n" +
+        "// Перемещает коммиты feature на вершину main\n\n" +
+        "// Пример workflow:\n" +
+        "1. git checkout feature\n" +
+        "2. git rebase main\n" +
+        "3. git checkout main\n" +
+        "4. git merge feature"
+    );
+    tvOutput.setText(
+        "MERGE:\n" +
+        "C0 → C1 → C2 → C3 (main)\n" +
+        "           ↘     ↗\n" +
+        "            C4 → C5 (merge commit)\n\n" +
+        "REBASE:\n" +
+        "C0 → C1 → C2 → C3 (main)\n" +
+        "                  → C4' → C5' (feature)\n\n" +
+        "$ git merge feature\n" +
+        "Merge made by the 'recursive' strategy."
+    );
+    tvAnalogy.setText(
+        "Аналогии:\n" +
+        "• **merge** = Склеить две ветки дерева 🌳\n" +
+        "• **rebase** = Пересадить ветку на другое дерево 🌱\n\n" +
+        "**merge:**\n" +
+        "— Сохраняет историю как есть\n" +
+        "— Видно, кто и когда сливал\n" +
+        "— Безопасно\n\n" +
+        "**rebase:**\n" +
+        "— Делает историю чистой и линейной\n" +
+        "— Как будто вы начали работу позже\n" +
+        "— Опасно для опубликованных коммитов"
+    );
+    break;
+	
+	case 58: // cherry-pick и squash
+    tvTitle.setText("cherry-pick и squash");
+    tvTheory.setText(
+        "**cherry-pick** — взять конкретный коммит и применить его\n" +
+        "• Не нужно сливать всю ветку\n" +
+        "• Можно взять один коммит из другой ветки\n" +
+        "• Создаёт копию коммита в текущей ветке\n\n" +
+        "**squash** — объединить несколько коммитов в один\n" +
+        "• Делает историю чище\n" +
+        "• Убирает промежуточные коммиты\n" +
+        "• Делается через rebase -i\n\n" +
+        "**Когда использовать:**\n" +
+        "• cherry-pick — нужно взять только один фикс\n" +
+        "• squash — перед merge, чтобы объединить мелкие коммиты"
+    );
+    tvCode.setText(
+        "// CHERRY-PICK\n" +
+        "git checkout main\n" +
+        "git cherry-pick abc1234\n" +
+        "// Берёт коммит abc1234 и применяет к main\n\n" +
+        "// Взять несколько коммитов\n" +
+        "git cherry-pick abc1234 def5678\n\n" +
+        "// SQUASH через rebase\n" +
+        "git rebase -i HEAD~3\n" +
+        "// В редакторе:\n" +
+        "// pick abc1234 Первый коммит\n" +
+        "// squash def5678 Второй коммит\n" +
+        "// squash ghi9012 Третий коммит\n\n" +
+        "// SQUASH при merge\n" +
+        "git merge --squash feature\n" +
+        "git commit -m \"Все изменения в одном коммите\""
+    );
+    tvOutput.setText(
+        "$ git cherry-pick abc1234\n" +
+        "[main def5678] Исправил баг в логине\n" +
+        " 1 file changed, 2 insertions(+)\n\n" +
+        "$ git rebase -i HEAD~3\n" +
+        "pick abc1234 Первый коммит\n" +
+        "squash def5678 Второй коммит\n" +
+        "squash ghi9012 Третий коммит\n\n" +
+        "Результат: один коммит вместо трёх!"
+    );
+    tvAnalogy.setText(
+        "Аналогии:\n" +
+        "• **cherry-pick** = Выбрать одну вишню из корзины 🍒\n" +
+        "• **squash** = Сжать несколько файлов в один архив 📦\n\n" +
+        "**cherry-pick:**\n" +
+        "— Берёте только нужное\n" +
+        "— Остальное игнорируете\n" +
+        "— Как копипаст коммита\n\n" +
+        "**squash:**\n" +
+        "— Объединяете мелочи в одно\n" +
+        "— Чище история\n" +
+        "— Как \"сохранить как\" в редакторе"
+    );
+    break;
+
+case 59: // patch и stash
+    tvTitle.setText("patch и stash");
+    tvTheory.setText(
+        "**git stash** — временно отложить изменения\n" +
+        "• Сохраняет незакоммиченные изменения\n" +
+        "• Очищает рабочую директорию\n" +
+        "• Можно вернуться к изменениям позже\n" +
+        "• Удобно, когда нужно переключить ветку\n\n" +
+        "**patch** — файл с изменениями\n" +
+        "• Можно отправить патч по почте\n" +
+        "• Применить патч к другому репозиторию\n" +
+        "• Не требует общего репозитория\n\n" +
+        "**Когда использовать stash:**\n" +
+        "• Начали работу, но нужно срочно переключиться\n" +
+        "• Хотите попробовать что-то, не коммитя\n" +
+        "• Нужно pull, но есть незакоммиченные изменения"
+    );
+    tvCode.setText(
+        "// STASH\n" +
+        "git stash                    // Сохранить изменения\n" +
+        "git stash list               // Показать сохранённые\n" +
+        "git stash pop                // Вернуть и удалить из stash\n" +
+        "git stash apply              // Вернуть, но оставить в stash\n" +
+        "git stash drop               // Удалить из stash\n" +
+        "git stash clear              // Очистить весь stash\n\n" +
+        "// Именованный stash\n" +
+        "git stash save \"WIP: логин\"\n\n" +
+        "// PATCH\n" +
+        "git diff > changes.patch     // Создать патч\n" +
+        "git apply changes.patch      // Применить патч"
+    );
+    tvOutput.setText(
+        "$ git stash\n" +
+        "Saved working directory and index state WIP on master\n\n" +
+        "$ git stash list\n" +
+        "stash@{0}: WIP on master: abc1234 Временные изменения\n" +
+        "stash@{1}: WIP on feature: def5678 Другая работа\n\n" +
+        "$ git stash pop\n" +
+        "On branch master\n" +
+        "Changes not staged for commit:\n" +
+        "  modified:   Main.java"
+    );
+    tvAnalogy.setText(
+        "Аналогии:\n" +
+        "• **stash** = Положить работу в ящик стола 🗄️\n" +
+        "• **patch** = Заплатка на одежду 🧵\n\n" +
+        "**stash:**\n" +
+        "— Отложили, занялись другим\n" +
+        "— Вернулись, достали из ящика\n" +
+        "— Как черновик в почте\n\n" +
+        "**patch:**\n" +
+        "— Файл с изменениями\n" +
+        "— Можно передать другому\n" +
+        "— Как diff, но в файле"
+    );
+    break;
+
+case 60: // reset и revert
+    tvTitle.setText("reset и revert");
+    tvTheory.setText(
+        "**git reset** — отменить коммиты (локально)\n" +
+        "• --soft: отменить коммит, сохранить изменения\n" +
+        "• --mixed: отменить коммит и add (по умолчанию)\n" +
+        "• --hard: полностью удалить коммит и изменения\n" +
+        "• ⚠️ Опасно для опубликованных коммитов!\n\n" +
+        "**git revert** — отменить коммит новым коммитом\n" +
+        "• Создаёт новый коммит с обратными изменениями\n" +
+        "• История не ломается\n" +
+        "• Безопасно для опубликованных коммитов\n\n" +
+        "**Когда что использовать:**\n" +
+        "• reset — для локальных коммитов, которые ещё не запушили\n" +
+        "• revert — для опубликованных коммитов"
+    );
+    tvCode.setText(
+        "// RESET\n" +
+        "git reset --soft HEAD~1      // Отменить коммит, изменения в индексе\n" +
+        "git reset --mixed HEAD~1     // Отменить коммит и add\n" +
+        "git reset --hard HEAD~1      // Полностью удалить (ОПАСНО!)\n\n" +
+        "// Отменить несколько коммитов\n" +
+        "git reset --hard HEAD~3\n\n" +
+        "// REVERT\n" +
+        "git revert abc1234           // Отменить конкретный коммит\n" +
+        "git revert HEAD              // Отменить последний коммит\n" +
+        "git revert --no-commit HEAD  // Отменить без создания коммита"
+    );
+    tvOutput.setText(
+        "$ git reset --soft HEAD~1\n" +
+        "Changes to be committed:\n" +
+        "  modified:   Main.java\n\n" +
+        "$ git revert abc1234\n" +
+        "[main def5678] Revert \"Добавил фичу\"\n" +
+        " 1 file changed, 2 deletions(-)\n\n" +
+        "История:\n" +
+        "abc1234 Добавил фичу\n" +
+        "def5678 Revert \"Добавил фичу\"  ← Новый коммит!"
+    );
+    tvAnalogy.setText(
+        "Аналогии:\n" +
+        "• **reset** = Стереть написанное ластиком 🧹\n" +
+        "• **revert** = Написать исправление поверх ошибки ✏️\n\n" +
+        "**reset:**\n" +
+        "— Как будто коммита не было\n" +
+        "— История меняется\n" +
+        "— Опасно для общих коммитов\n\n" +
+        "**revert:**\n" +
+        "— Создаёт новый коммит\n" +
+        "— История сохраняется\n" +
+        "— Безопасно"
+    );
+    break;
+	
+	case 61: // Gradle и Maven
+    tvTitle.setText("Сборщики проектов: Gradle и Maven");
+    tvTheory.setText(
+        "**Сборщик** — инструмент для автоматизации сборки проекта\n\n" +
+        "**Maven:**\n" +
+        "• Использует XML (pom.xml)\n" +
+        "• Строгая структура проекта\n" +
+        "• Конвенция важнее конфигурации\n" +
+        "• Зрелый, стабильный\n" +
+        "• Медленнее Gradle\n\n" +
+        "**Gradle:**\n" +
+        "• Использует Groovy/Kotlin DSL\n" +
+        "• Гибкая конфигурация\n" +
+        "• Быстрее Maven (инкрементальная сборка)\n" +
+        "• Используется в Android\n" +
+        "• Более современный\n\n" +
+        "**Что делают сборщики:**\n" +
+        "• Компиляция кода\n" +
+        "• Управление зависимостями\n" +
+        "• Запуск тестов\n" +
+        "• Создание JAR/APK\n" +
+        "• Деплой"
+    );
+    tvCode.setText(
+        "// MAVEN (pom.xml)\n" +
+        "<project>\n" +
+        "    <dependencies>\n" +
+        "        <dependency>\n" +
+        "            <groupId>junit</groupId>\n" +
+        "            <artifactId>junit</artifactId>\n" +
+        "            <version>4.12</version>\n" +
+        "        </dependency>\n" +
+        "    </dependencies>\n" +
+        "</project>\n\n" +
+        "// GRADLE (build.gradle)\n" +
+        "dependencies {\n" +
+        "    implementation 'junit:junit:4.12'\n" +
+        "    implementation 'com.google.code.gson:gson:2.8.6'\n" +
+        "}\n\n" +
+        "// Команды Maven:\n" +
+        "mvn compile        // Компиляция\n" +
+        "mvn test           // Тесты\n" +
+        "mvn package        // Создать JAR\n" +
+        "mvn install        // Установить локально"
+    );
+    tvOutput.setText(
+        "Maven:\n" +
+        "$ mvn clean install\n" +
+        "[INFO] BUILD SUCCESS\n" +
+        "[INFO] Total time: 15.234 s\n\n" +
+        "Gradle:\n" +
+        "$ ./gradlew build\n" +
+        "BUILD SUCCESSFUL in 8s\n" +
+        "12 actionable tasks: 10 executed, 2 up-to-date"
+    );
+    tvAnalogy.setText(
+        "Аналогии:\n" +
+        "• **Maven** = IKEA (строгие инструкции, всё по стандарту) 🛋️\n" +
+        "• **Gradle** = Конструктор LEGO (гибко, можно по-разному) \n\n" +
+        "**Maven:**\n" +
+        "— Простой, предсказуемый\n" +
+        "— Много проектов используют\n" +
+        "— XML многословный\n\n" +
+        "**Gradle:**\n" +
+        "— Гибкий, мощный\n" +
+        "— Быстрее\n" +
+        "— Стандарт для Android"
+    );
+    break;
+
+case 62: // Этапы сборки Maven
+    tvTitle.setText("Этапы сборки в Maven");
+    tvTheory.setText(
+        "**Maven Lifecycle** — последовательность этапов сборки\n\n" +
+        "**default lifecycle:**\n" +
+        "1. **validate** — проверка структуры проекта\n" +
+        "2. **compile** — компиляция исходного кода\n" +
+        "3. **test** — запуск тестов\n" +
+        "4. **package** — упаковка в JAR/WAR\n" +
+        "5. **verify** — проверка качества\n" +
+        "6. **install** — установка в локальный репозиторий\n" +
+        "7. **deploy** — публикация в удалённый репозиторий\n\n" +
+        "**Важно:**\n" +
+        "• Запуск любого этапа выполняет все предыдущие\n" +
+        "• mvn test → выполнит validate, compile, test\n" +
+        "• mvn package → выполнит все до package\n\n" +
+        "**Другие lifecycle:**\n" +
+        "• clean — очистка (mvn clean)\n" +
+        "• site — генерация документации"
+    );
+    tvCode.setText(
+        "// Запуск этапов\n" +
+        "mvn validate              // Проверка\n" +
+        "mvn compile               // Компиляция\n" +
+        "mvn test                  // Тесты\n" +
+        "mvn package               // Создать JAR\n" +
+        "mvn install               // Установить локально\n" +
+        "mvn deploy                // Опубликовать\n\n" +
+        "// Комбинации\n" +
+        "mvn clean install         // Очистить и установить\n" +
+        "mvn clean package         // Очистить и упаковать\n" +
+        "mvn test -Dtest=MyTest    // Запустить конкретный тест\n\n" +
+        "// Пропустить тесты\n" +
+        "mvn package -DskipTests"
+    );
+    tvOutput.setText(
+        "$ mvn clean install\n" +
+        "[INFO] --- maven-clean-plugin:3.1.0:clean ---\n" +
+        "[INFO] Deleting target\n" +
+        "[INFO] --- maven-compile-plugin:3.8.1:compile ---\n" +
+        "[INFO] Compiling 15 source files\n" +
+        "[INFO] --- maven-test-plugin:2.22.2:test ---\n" +
+        "[INFO] Tests run: 42, Failures: 0\n" +
+        "[INFO] --- maven-jar-plugin:3.2.0:jar ---\n" +
+        "[INFO] Building jar: target/app-1.0.jar\n" +
+        "[INFO] BUILD SUCCESS"
+    );
+    tvAnalogy.setText(
+        "Аналогия с заводом:\n" +
+        "• **validate** = Проверка чертежей 📋\n" +
+        "• **compile** = Производство деталей 🔧\n" +
+        "• **test** = Контроль качества ✅\n" +
+        "• **package** = Упаковка в коробку 📦\n" +
+        "• **install** = Склад завода \n" +
+        "• **deploy** = Доставка в магазин 🚚\n\n" +
+        "**Запуск любого этапа = выполнение всех предыдущих!**"
+    );
+    break;
+
+case 63: // Где хранятся зависимости
+    tvTitle.setText("Где хранятся зависимости");
+    tvTheory.setText(
+        "**Локальный репозиторий** — папка на вашем компьютере\n\n" +
+        "**Maven:**\n" +
+        "• Путь: `~/.m2/repository/`\n" +
+        "• Структура: groupId/artifactId/version/\n" +
+        "• Пример: `~/.m2/repository/junit/junit/4.12/`\n\n" +
+        "**Gradle:**\n" +
+        "• Путь: `~/.gradle/caches/`\n" +
+        "• Структура: modules-2/files-2.1/\n" +
+        "• Пример: `~/.gradle/caches/modules-2/files-2.1/junit/`\n\n" +
+        "**Как это работает:**\n" +
+        "1. Сборщик проверяет локальный репозиторий\n" +
+        "2. Если зависимости нет — скачивает из интернета\n" +
+        "3. Сохраняет в локальный репозиторий\n" +
+        "4. В следующий раз берёт из локального\n\n" +
+        "**Центральный репозиторий:**\n" +
+        "• Maven Central: repo1.maven.org\n" +
+        "• Google: maven.google.com"
+    );
+    tvCode.setText(
+        "// Посмотреть локальный репозиторий Maven\n" +
+        "ls ~/.m2/repository/\n\n" +
+        "// Очистить кеш Maven\n" +
+        "mvn dependency:purge-local-repository\n\n" +
+        "// Очистить кеш Gradle\n" +
+        "./gradlew cleanBuildCache\n\n" +
+        "// Посмотреть зависимости проекта\n" +
+        "mvn dependency:tree\n" +
+        "./gradlew dependencies\n\n" +
+        "// Принудительно обновить зависимости\n" +
+        "mvn clean install -U\n" +
+        "./gradlew build --refresh-dependencies"
+    );
+    tvOutput.setText(
+        "Структура ~/.m2/repository/:\n" +
+        "junit/\n" +
+        "  junit/\n" +
+        "    4.12/\n" +
+        "      junit-4.12.jar\n" +
+        "      junit-4.12.pom\n\n" +
+        "$ mvn dependency:tree\n" +
+        "[INFO] com.example:my-app:jar:1.0\n" +
+        "[INFO] +- junit:junit:jar:4.12:test\n" +
+        "[INFO] \\- org.hamcrest:hamcrest-core:jar:1.3:test"
+    );
+    tvAnalogy.setText(
+        "Аналогия:\n" +
+        "• **Локальный репозиторий** = Ваша библиотека дома 📚\n" +
+        "• **Центральный репозиторий** = Городская библиотека 🏛️\n" +
+        "• **Зависимость** = Книга 📖\n\n" +
+        "**Процесс:**\n" +
+        "1. Нужна книга? Проверяете домашнюю библиотеку\n" +
+        "2. Нет? Идёте в городскую библиотеку\n" +
+        "3. Берёте книгу домой\n" +
+        "4. В следующий раз она уже дома!\n\n" +
+        "**Очистка кеша** = Выбросить старые книги"
+    );
+    break;
+	
+	case 64: // Многопоточность
+    tvTitle.setText("Многопоточность");
+    tvTheory.setText(
+        "**Многопоточность** — выполнение нескольких задач одновременно\n\n" +
+        "**Процесс vs Поток:**\n" +
+        "• **Процесс** — независимая программа (своя память)\n" +
+        "• **Поток** — лёгкая единица выполнения внутри процесса\n" +
+        "• Потоки одного процесса разделяют память\n\n" +
+        "**Зачем нужна многопоточность:**\n" +
+        "• Использовать несколько ядер CPU\n" +
+        "• Не блокировать UI при долгих операциях\n" +
+        "• Обрабатывать множество клиентов (сервер)\n" +
+        "• Параллельные вычисления\n\n" +
+        "**Проблемы многопоточности:**\n" +
+        "• Состояние гонки (race condition)\n" +
+        "• Дедлоки (взаимная блокировка)\n" +
+        "• Непредсказуемый порядок выполнения"
+    );
+    tvCode.setText(
+        "// Создание потока через Runnable\n" +
+        "Runnable task = () -> {\n" +
+        "    System.out.println(\"Поток: \" + \n" +
+        "        Thread.currentThread().getName());\n" +
+        "};\n" +
+        "Thread thread = new Thread(task);\n" +
+        "thread.start();\n\n" +
+        "// Создание потока через наследование\n" +
+        "class MyThread extends Thread {\n" +
+        "    public void run() {\n" +
+        "        System.out.println(\"Работаю...\");\n" +
+        "    }\n" +
+        "}\n" +
+        "new MyThread().start();\n\n" +
+        "// Главный поток\n" +
+        "public static void main(String[] args) {\n" +
+        "    System.out.println(\"Главный: \" + \n" +
+        "        Thread.currentThread().getName());\n" +
+        "}"
+    );
+    tvOutput.setText(
+        "Главный поток: main\n" +
+        "Поток: Thread-0\n" +
+        "Работаю...\n\n" +
+        "Потоки выполняются параллельно!\n" +
+        "Порядок вывода может меняться."
+    );
+    tvAnalogy.setText(
+        "Аналогии:\n" +
+        "• **Процесс** = Ресторан 🍽️\n" +
+        "• **Поток** = Официант в ресторане 👨‍\n" +
+        "• **Многопоточность** = Несколько официантов обслуживают столики одновременно\n\n" +
+        "**Преимущества:**\n" +
+        "✅ Быстрее (параллельная работа)\n" +
+        "✅ Отзывчивость (UI не зависает)\n" +
+        "✅ Эффективность (использование CPU)\n\n" +
+        "**Недостатки:**\n" +
+        " Сложнее отлаживать\n" +
+        "❌ Проблемы синхронизации\n" +
+        "❌ Race conditions"
+    );
+    break;
+
+case 65: // Способы создания потоков
+    tvTitle.setText("Способы создания потоков");
+    tvTheory.setText(
+        "**3 способа создать поток в Java:**\n\n" +
+        "**1. Наследование Thread:**\n" +
+        "• Простой способ\n" +
+        "• Ограничение: нельзя наследовать другой класс\n" +
+        "• Переопределить метод run()\n\n" +
+        "**2. Реализация Runnable:**\n" +
+        "• Более гибкий (можно наследовать другой класс)\n" +
+        "• Разделяет задачу и поток\n" +
+        "• Рекомендуется чаще\n\n" +
+        "**3. Реализация Callable:**\n" +
+        "• Может возвращать результат\n" +
+        "• Может выбрасывать исключения\n" +
+        "• Используется с ExecutorService\n\n" +
+        "**Какой способ выбрать?**\n" +
+        "• Runnable — для простых задач\n" +
+        "• Callable — когда нужен результат\n" +
+        "• Thread — редко, только если нужно переопределить поведение потока"
+    );
+    tvCode.setText(
+        "// Способ 1: Наследование Thread\n" +
+        "class MyThread extends Thread {\n" +
+        "    public void run() {\n" +
+        "        System.out.println(\"Поток 1\");\n" +
+        "    }\n" +
+        "}\n" +
+        "new MyThread().start();\n\n" +
+        "// Способ 2: Runnable (рекомендуется)\n" +
+        "class MyTask implements Runnable {\n" +
+        "    public void run() {\n" +
+        "        System.out.println(\"Поток 2\");\n" +
+        "    }\n" +
+        "}\n" +
+        "new Thread(new MyTask()).start();\n\n" +
+        "// Способ 3: Callable (с результатом)\n" +
+        "Callable<Integer> task = () -> {\n" +
+        "    return 42;\n" +
+        "};\n" +
+        "ExecutorService executor = \n" +
+        "    Executors.newSingleThreadExecutor();\n" +
+        "Future<Integer> future = executor.submit(task);\n" +
+        "Integer result = future.get(); // 42"
+    );
+    tvOutput.setText(
+        "Поток 1\n" +
+        "Поток 2\n" +
+        "Результат: 42\n\n" +
+        "Разница:\n" +
+        "• Thread — простой, но ограниченный\n" +
+        "• Runnable — гибкий, рекомендуемый\n" +
+        "• Callable — с возвратом результата"
+    );
+    tvAnalogy.setText(
+        "Аналогии:\n" +
+        "• **Thread** = Работник с фиксированной должностью 👷\n" +
+        "• **Runnable** = Фрилансер (можно нанять для любой задачи) 🧑‍💻\n" +
+        "• **Callable** = Фрилансер, который отчитывается о результате 📊\n\n" +
+        "**Почему Runnable лучше Thread:**\n" +
+        "✅ Можно наследовать другой класс\n" +
+        "✅ Разделяет задачу и выполнение\n" +
+        "✅ Можно переиспользовать"
+    );
+    break;
+
+case 66: // Состояния потоков
+    tvTitle.setText("Виды состояния потоков");
+    tvTheory.setText(
+        "**Жизненный цикл потока:**\n\n" +
+        "**1. NEW** — создан, но не запущен\n" +
+        "• Thread t = new Thread()\n" +
+        "• Ещё не вызван start()\n\n" +
+        "**2. RUNNABLE** — готов к выполнению\n" +
+        "• Вызван start()\n" +
+        "• Ждёт процессорное время\n\n" +
+        "**3. BLOCKED** — заблокирован\n" +
+        "• Ждёт монитор (synchronized)\n" +
+        "• Не может выполняться\n\n" +
+        "**4. WAITING** — ожидает уведомления\n" +
+        "• Вызван wait()\n" +
+        "• Ждёт notify() или notifyAll()\n\n" +
+        "**5. TIMED_WAITING** — ожидает с таймаутом\n" +
+        "• Вызван sleep(), wait(timeout), join(timeout)\n\n" +
+        "**6. TERMINATED** — завершён\n" +
+        "• Метод run() завершился\n" +
+        "• Поток больше не существует"
+    );
+    tvCode.setText(
+        "Thread t = new Thread(() -> {\n" +
+        "    // RUNNABLE\n" +
+        "    try {\n" +
+        "        Thread.sleep(1000);  // TIMED_WAITING\n" +
+        "        synchronized(obj) {  // BLOCKED если занято\n" +
+        "            obj.wait();      // WAITING\n" +
+        "        }\n" +
+        "    } catch (InterruptedException e) { }\n" +
+        "});\n" +
+        "// NEW\n" +
+        "t.start();  // RUNNABLE\n" +
+        "// ... выполнение ...\n" +
+        "// TERMINATED"
+    );
+    tvOutput.setText(
+        "Состояния:\n" +
+        "NEW → RUNNABLE → RUNNING → TERMINATED\n" +
+        "                    ↓\n" +
+        "              BLOCKED/WAITING\n" +
+        "                    ↓\n" +
+        "                  RUNNABLE\n\n" +
+        "Thread.getState():\n" +
+        "NEW, RUNNABLE, BLOCKED, WAITING, \n" +
+        "TIMED_WAITING, TERMINATED"
+    );
+    tvAnalogy.setText(
+        "Аналогия с работником:\n" +
+        "• **NEW** = Нанят, но ещё не начал работу 📝\n" +
+        "• **RUNNABLE** = Готов работать, ждёт задачу ⏳\n" +
+        "• **RUNNING** = Работает 🔧\n" +
+        "• **BLOCKED** = Ждёт, пока освободится инструмент 🚫\n" +
+        "• **WAITING** = Ждёт звонка от начальника 📞\n" +
+        "• **TIMED_WAITING** = Взял перерыв на 10 минут ☕\n" +
+        "• **TERMINATED** = Уволился 👋"
+    );
+    break;
+
+case 67: // volatile
+    tvTitle.setText("Ключевое слово volatile");
+    tvTheory.setText(
+        "**volatile** — гарантирует видимость изменений между потоками\n\n" +
+        "**Проблема:**\n" +
+        "• Каждый поток может кэшировать переменную\n" +
+        "• Изменения в одном потоке не видны другому\n" +
+        "• Получаем устаревшие данные\n\n" +
+        "**Решение — volatile:**\n" +
+        "• Запрещает кэширование переменной\n" +
+        "• Все чтения/записи идут в основную память\n" +
+        "• Изменения сразу видны всем потокам\n\n" +
+        "**Когда использовать:**\n" +
+        "• Флаги остановки потока (boolean running)\n" +
+        "• Простые переменные, которые читают/пишут разные потоки\n" +
+        "• Не защищает от race condition!\n\n" +
+        "**volatile vs synchronized:**\n" +
+        "• volatile — только видимость, не атомарность\n" +
+        "• synchronized — видимость + атомарность + блокировка"
+    );
+    tvCode.setText(
+        "// Без volatile — проблема!\n" +
+        "class Worker {\n" +
+        "    private boolean running = true;  // Кэшируется!\n" +
+        "    \n" +
+        "    public void run() {\n" +
+        "        while (running) {  // Может не увидеть изменение\n" +
+        "            // работа...\n" +
+        "        }\n" +
+        "    }\n" +
+        "    \n" +
+        "    public void stop() {\n" +
+        "        running = false;  // Другой поток может не увидеть!\n" +
+        "    }\n" +
+        "}\n\n" +
+        "// С volatile — работает!\n" +
+        "class Worker {\n" +
+        "    private volatile boolean running = true;\n" +
+        "    // Теперь изменения видны всем потокам\n" +
+        "}"
+    );
+    tvOutput.setText(
+        "Без volatile:\n" +
+        "Поток 1: running = false\n" +
+        "Поток 2: всё ещё видит running = true (из кэша) ❌\n\n" +
+        "С volatile:\n" +
+        "Поток 1: running = false\n" +
+        "Поток 2: сразу видит running = false ✅"
+    );
+    tvAnalogy.setText(
+        "Аналогия:\n" +
+        "• **Без volatile** = У каждого работника своя копия документа 📄\n" +
+        "• **С volatile** = Все работают с одним документом на столе 📋\n\n" +
+        "**volatile гарантирует:**\n" +
+        "✅ Видимость изменений\n" +
+        "✅ Порядок операций (happens-before)\n\n" +
+        "**volatile НЕ гарантирует:**\n" +
+        "❌ Атомарность (i++ всё ещё не безопасно)\n" +
+        "❌ Защиту от race condition"
+    );
+    break;
+
+case 68: // Проблемы многопоточности
+    tvTitle.setText("Проблемы многопоточности");
+    tvTheory.setText(
+        "**1. Race Condition (Состояние гонки):**\n" +
+        "• Два потока изменяют одну переменную\n" +
+        "• Результат зависит от порядка выполнения\n" +
+        "• Непредсказуемое поведение\n\n" +
+        "**2. Deadlock (Дедлок):**\n" +
+        "• Два потока ждут друг друга\n" +
+        "• Никто не может продолжить\n" +
+        "• Программа зависает навсегда\n\n" +
+        "**3. Livelock (Лайвлок):**\n" +
+        "• Потоки активны, но не продвигаются\n" +
+        "• Постоянно реагируют друг на друга\n" +
+        "• Как два человека в коридоре, которые не могут разойтись\n\n" +
+        "**Как избежать:**\n" +
+        "• synchronized — блокировки\n" +
+        "• Lock — явные блокировки\n" +
+        "• Atomic — атомарные операции\n" +
+        "• Правильный порядок захвата блокировок"
+    );
+    tvCode.setText(
+        "// RACE CONDITION\n" +
+        "int counter = 0;\n" +
+        "// Поток 1: counter++ (читает 0, пишет 1)\n" +
+        "// Поток 2: counter++ (читает 0, пишет 1)\n" +
+        "// Результат: 1 вместо 2! ❌\n\n" +
+        "// Решение: synchronized\n" +
+        "synchronized(this) {\n" +
+        "    counter++;\n" +
+        "}\n\n" +
+        "// DEADLOCK\n" +
+        "synchronized(lock1) {\n" +
+        "    synchronized(lock2) {  // Поток 1 ждёт lock2\n" +
+        "        // ...\n" +
+        "    }\n" +
+        "}\n" +
+        "synchronized(lock2) {\n" +
+        "    synchronized(lock1) {  // Поток 2 ждёт lock1\n" +
+        "        // ...\n" +
+        "    }\n" +
+        "}\n" +
+        "// Оба ждут друг друга = DEADLOCK!"
+    );
+    tvOutput.setText(
+        "Race Condition:\n" +
+        "Ожидалось: 1000\n" +
+        "Получилось: 987 ❌\n\n" +
+        "Deadlock:\n" +
+        "Поток 1: держит lock1, ждёт lock2\n" +
+        "Поток 2: держит lock2, ждёт lock1\n" +
+        "Программа зависла! ❌\n\n" +
+        "Livelock:\n" +
+        "Потоки работают, но не продвигаются 🔄"
+    );
+    tvAnalogy.setText(
+        "Аналогии:\n" +
+        "• **Race Condition** = Два человека пишут в одну тетрадь одновременно ✍️\n" +
+        "• **Deadlock** = Два автомобиля на перекрёстке, каждый ждёт другого \n" +
+        "• **Livelock** = Два человека в коридоре, оба шагают в одну сторону 🚶\n\n" +
+        "**Как избежать deadlock:**\n" +
+        "✅ Всегда захватывать блокировки в одном порядке\n" +
+        "✅ Использовать tryLock() с таймаутом\n" +
+        "✅ Избегать вложенных блокировок"
+    );
+    break;
+	
+	case 69: // java.util.concurrent
+    tvTitle.setText("Пакет java.util.concurrent");
+    tvTheory.setText(
+        "**java.util.concurrent** — пакет для многопоточного программирования\n\n" +
+        "**Основные компоненты:**\n\n" +
+        "**Executor Framework:**\n" +
+        "• ExecutorService — управление пулом потоков\n" +
+        "• Executors — фабрика для создания пулов\n" +
+        "• ThreadPoolExecutor — настраиваемый пул\n\n" +
+        "**Concurrent Collections:**\n" +
+        "• ConcurrentHashMap — потокобезопасная HashMap\n" +
+        "• CopyOnWriteArrayList — потокобезопасный ArrayList\n" +
+        "• BlockingQueue — очередь с блокировкой\n\n" +
+        "**Synchronizers:**\n" +
+        "• CountDownLatch — ожидание завершения\n" +
+        "• CyclicBarrier — барьер для потоков\n" +
+        "• Semaphore — семафор\n" +
+        "• Exchanger — обмен данными\n\n" +
+        "**Atomic Variables:**\n" +
+        "• AtomicInteger, AtomicLong\n" +
+        "• AtomicReference\n" +
+        "• Без блокировок (lock-free)"
+    );
+    tvCode.setText(
+        "// ExecutorService\n" +
+        "ExecutorService executor = \n" +
+        "    Executors.newFixedThreadPool(4);\n" +
+        "executor.submit(() -> {\n" +
+        "    System.out.println(\"Работа в пуле\");\n" +
+        "});\n" +
+        "executor.shutdown();\n\n" +
+        "// ConcurrentHashMap\n" +
+        "ConcurrentHashMap<String, Integer> map = \n" +
+        "    new ConcurrentHashMap<>();\n" +
+        "map.put(\"key\", 42);  // Потокобезопасно\n\n" +
+        "// BlockingQueue\n" +
+        "BlockingQueue<String> queue = \n" +
+        "    new LinkedBlockingQueue<>();\n" +
+        "queue.put(\"task\");\n" +
+        "String task = queue.take();\n\n" +
+        "// CountDownLatch\n" +
+        "CountDownLatch latch = new CountDownLatch(3);\n" +
+        "latch.countDown();\n" +
+        "latch.await();"
+    );
+    tvOutput.setText(
+        "ExecutorService:\n" +
+        "Создан пул из 4 потоков\n" +
+        "Задача выполнена в pool-1-thread-1\n\n" +
+        "ConcurrentHashMap:\n" +
+        "Потокобезопасная работа без synchronized\n\n" +
+        "CountDownLatch:\n" +
+        "Главный поток ждёт завершения 3 задач"
+    );
+    tvAnalogy.setText(
+        "Аналогии:\n" +
+        "• **ExecutorService** = Менеджер, распределяющий задачи между работниками 👔\n" +
+        "• **ConcurrentHashMap** = Таблица, за которой работают несколько человек \n" +
+        "• **BlockingQueue** = Конвейер на заводе 🏭\n" +
+        "• **CountDownLatch** = Стартовый пистолет 🔫\n" +
+        "• **Semaphore** = Парковка с ограниченным числом мест 🅿️"
+    );
+    break;
+
+case 70: // Atomic
+    tvTitle.setText("Atomic переменные");
+    tvTheory.setText(
+        "**Atomic** — атомарные операции без блокировок\n\n" +
+        "**Проблема:**\n" +
+        "• i++ не атомарно (чтение → изменение → запись)\n" +
+        "• Нужен synchronized для безопасности\n" +
+        "• Блокировки медленные\n\n" +
+        "**Решение — Atomic:**\n" +
+        "• Использует CAS (Compare-And-Swap)\n" +
+        "• Атомарные операции без блокировок\n" +
+        "• Быстрее synchronized\n\n" +
+        "**Основные классы:**\n" +
+        "• AtomicInteger — атомарный int\n" +
+        "• AtomicLong — атомарный long\n" +
+        "• AtomicBoolean — атомарный boolean\n" +
+        "• AtomicReference — атомарная ссылка на объект\n\n" +
+        "**Методы:**\n" +
+        "• get() — получить значение\n" +
+        "• set() — установить значение\n" +
+        "• incrementAndGet() — увеличить и получить\n" +
+        "• compareAndSet() — CAS операция"
+    );
+    tvCode.setText(
+        "// Без Atomic (не безопасно)\n" +
+        "int counter = 0;\n" +
+        "counter++;  // Race condition!\n\n" +
+        "// С Atomic (безопасно)\n" +
+        "AtomicInteger counter = new AtomicInteger(0);\n" +
+        "counter.incrementAndGet();  // Атомарно!\n\n" +
+        "// Основные операции\n" +
+        "AtomicInteger atomic = new AtomicInteger(10);\n" +
+        "atomic.get();           // 10\n" +
+        "atomic.set(20);         // Установить 20\n" +
+        "atomic.incrementAndGet();  // 21\n" +
+        "atomic.decrementAndGet();  // 20\n" +
+        "atomic.addAndGet(5);    // 25\n\n" +
+        "// CAS операция\n" +
+        "boolean success = atomic.compareAndSet(25, 30);\n" +
+        "// Если текущее 25, установить 30"
+    );
+    tvOutput.setText(
+        "AtomicInteger:\n" +
+        "Начальное значение: 0\n" +
+        "После incrementAndGet(): 1\n" +
+        "После addAndGet(5): 6\n" +
+        "CAS(6, 10): true\n" +
+        "Текущее значение: 10\n\n" +
+        "1000 потоков делают increment:\n" +
+        "Без Atomic: 987 ❌\n" +
+        "С Atomic: 1000 ✅"
+    );
+    tvAnalogy.setText(
+        "Аналогия:\n" +
+        "• **Без Atomic** = Несколько людей считают деньги вместе, могут ошибиться 💰\n" +
+        "• **С Atomic** = Кассовый аппарат (считает точно) 🧮\n\n" +
+        "**CAS (Compare-And-Swap):**\n" +
+        "— Проверяю: значение = 25?\n" +
+        "— Если да: меняю на 30\n" +
+        "— Если нет: не меняю, возвращаю false\n\n" +
+        "**Преимущества Atomic:**\n" +
+        "✅ Быстрее synchronized\n" +
+        "✅ Нет блокировок\n" +
+        "✅ Нет deadlock"
+    );
+    break;
+
+case 71: // Lock
+    tvTitle.setText("Lock (блокировки)");
+    tvTheory.setText(
+        "**Lock** — явные блокировки (альтернатива synchronized)\n\n" +
+        "**ReentrantLock:**\n" +
+        "• Более гибкий, чем synchronized\n" +
+        "• Можно попробовать захватить без ожидания\n" +
+        "• Можно установить таймаут\n" +
+        "• Можно освободить в другом методе\n\n" +
+        "**ReadWriteLock:**\n" +
+        "• Разделяет чтение и запись\n" +
+        "• Несколько читателей могут работать одновременно\n" +
+        "• Запись эксклюзивна\n\n" +
+        "**Методы Lock:**\n" +
+        "• lock() — захватить (блокирует)\n" +
+        "• unlock() — освободить\n" +
+        "• tryLock() — попробовать захватить\n" +
+        "• tryLock(time) — захватить с таймаутом\n" +
+        "• lockInterruptibly() — захватить с прерыванием\n\n" +
+        "**Важно:**\n" +
+        "Всегда освобождать Lock в finally!"
+    );
+    tvCode.setText(
+        "// ReentrantLock\n" +
+        "Lock lock = new ReentrantLock();\n\n" +
+        "lock.lock();  // Захватить\n" +
+        "try {\n" +
+        "    // Критическая секция\n" +
+        "    counter++;\n" +
+        "} finally {\n" +
+        "    lock.unlock();  // Обязательно освободить!\n" +
+        "}\n\n" +
+        "// tryLock (не блокирует)\n" +
+        "if (lock.tryLock()) {\n" +
+        "    try {\n" +
+        "        // Работа\n" +
+        "    } finally {\n" +
+        "        lock.unlock();\n" +
+        "    }\n" +
+        "} else {\n" +
+        "    // Не удалось захватить\n" +
+        "}\n\n" +
+        "// ReadWriteLock\n" +
+        "ReadWriteLock rwLock = new ReentrantReadWriteLock();\n" +
+        "rwLock.readLock().lock();    // Несколько читателей\n" +
+        "rwLock.writeLock().lock();   // Один писатель"
+    );
+    tvOutput.setText(
+        "ReentrantLock:\n" +
+        "Поток 1 захватил lock\n" +
+        "Поток 2 ждёт...\n" +
+        "Поток 1 освободил lock\n" +
+        "Поток 2 захватил lock\n\n" +
+        "tryLock:\n" +
+        "Поток 1: lock захвачен ✅\n" +
+        "Поток 2: lock занят, пропускаем ⏭️"
+    );
+    tvAnalogy.setText(
+        "Аналогии:\n" +
+        "• **synchronized** = Автоматическая дверь (вошёл — закрылась, вышел — открылась) \n" +
+        "• **Lock** = Замок с ключом (сам решаешь, когда открыть/закрыть) 🔐\n\n" +
+        "**Преимущества Lock:**\n" +
+        "✅ Можно попробовать без ожидания\n" +
+        "✅ Можно установить таймаут\n" +
+        "✅ Можно прервать ожидание\n" +
+        "✅ ReadWriteLock для чтения/записи\n\n" +
+        "**Недостатки:**\n" +
+        "❌ Нужно вручную освобождать\n" +
+        "❌ Можно забыть unlock()"
+    );
+    break;
+
+case 72: // Executors
+    tvTitle.setText("Executors");
+    tvTheory.setText(
+        "**Executors** — фабрика для создания пулов потоков\n\n" +
+        "**Зачем нужен пул:**\n" +
+        "• Создание потока дорогое\n" +
+        "• Пул переиспользует потоки\n" +
+        "• Ограничивает количество одновременных задач\n" +
+        "• Управляет очередью задач\n\n" +
+        "**Типы пулов:**\n" +
+        "• **newFixedThreadPool(n)** — фиксированное число потоков\n" +
+        "• **newCachedThreadPool()** — создаёт по необходимости\n" +
+        "• **newSingleThreadExecutor()** — один поток\n" +
+        "• **newScheduledThreadPool()** — для отложенных задач\n" +
+        "• **newWorkStealingPool()** — ворующий работу (Java 8+)\n\n" +
+        "**Методы ExecutorService:**\n" +
+        "• execute(Runnable) — выполнить без результата\n" +
+        "• submit(Callable) — выполнить с результатом\n" +
+        "• shutdown() — завершить после текущих задач\n" +
+        "• shutdownNow() — немедленно завершить"
+    );
+    tvCode.setText(
+        "// Fixed ThreadPool\n" +
+        "ExecutorService executor = \n" +
+        "    Executors.newFixedThreadPool(4);\n" +
+        "for (int i = 0; i < 10; i++) {\n" +
+        "    executor.submit(() -> {\n" +
+        "        System.out.println(\"Задача в \" + \n" +
+        "            Thread.currentThread().getName());\n" +
+        "    });\n" +
+        "}\n" +
+        "executor.shutdown();\n\n" +
+        "// Cached ThreadPool\n" +
+        "ExecutorService cached = \n" +
+        "    Executors.newCachedThreadPool();\n" +
+        "// Создаёт потоки по необходимости\n\n" +
+        "// Scheduled ThreadPool\n" +
+        "ScheduledExecutorService scheduled = \n" +
+        "    Executors.newScheduledThreadPool(2);\n" +
+        "scheduled.scheduleAtFixedRate(() -> {\n" +
+        "    System.out.println(\"Каждые 5 секунд\");\n" +
+        "}, 0, 5, TimeUnit.SECONDS);"
+    );
+    tvOutput.setText(
+        "FixedThreadPool(4):\n" +
+        "Задача в pool-1-thread-1\n" +
+        "Задача в pool-1-thread-2\n" +
+        "Задача в pool-1-thread-3\n" +
+        "Задача в pool-1-thread-4\n" +
+        "Задача в pool-1-thread-1  ← Переиспользование!\n\n" +
+        "Всего 10 задач, но только 4 потока"
+    );
+    tvAnalogy.setText(
+        "Аналогии:\n" +
+        "• **FixedThreadPool** = Команда из N работников 👷‍♂️👷‍♀️👷‍♂️👷‍♀️\n" +
+        "• **CachedThreadPool** = Фрилансеры (нанимаем по необходимости) 🧑‍💻\n" +
+        "• **SingleThreadExecutor** = Один работник 👤\n" +
+        "• **ScheduledThreadPool** = Работники по расписанию \n\n" +
+        "**Преимущества пула:**\n" +
+        "✅ Переиспользование потоков\n" +
+        "✅ Контроль количества\n" +
+        "✅ Очередь задач\n" +
+        "✅ Управление жизненным циклом"
+    );
+    break;
+
+case 73: // Future и CompletableFuture
+    tvTitle.setText("Future и CompletableFuture");
+    tvTheory.setText(
+        "**Future** — результат асинхронной операции\n\n" +
+        "**Future:**\n" +
+        "• Представляет результат, который будет готов позже\n" +
+        "• get() — блокирует до получения результата\n" +
+        "• isDone() — проверка готовности\n" +
+        "• cancel() — отмена задачи\n\n" +
+        "**CompletableFuture (Java 8+):**\n" +
+        "• Более мощный, чем Future\n" +
+        "• Можно комбинировать задачи\n" +
+        "• Callback-и вместо блокировки\n" +
+        "• Цепочки операций\n\n" +
+        "**Методы CompletableFuture:**\n" +
+        "• supplyAsync() — асинхронное выполнение\n" +
+        "• thenApply() — преобразовать результат\n" +
+        "• thenAccept() — обработать результат\n" +
+        "• thenCombine() — объединить два Future\n" +
+        "• allOf() — ждать все Future\n" +
+        "• anyOf() — ждать любой Future"
+    );
+    tvCode.setText(
+        "// Future\n" +
+        "ExecutorService executor = \n" +
+        "    Executors.newSingleThreadExecutor();\n" +
+        "Future<Integer> future = executor.submit(() -> {\n" +
+        "    Thread.sleep(1000);\n" +
+        "    return 42;\n" +
+        "});\n" +
+        "Integer result = future.get();  // Блокирует!\n\n" +
+        "// CompletableFuture\n" +
+        "CompletableFuture<Integer> cf = \n" +
+        "    CompletableFuture.supplyAsync(() -> {\n" +
+        "        return 42;\n" +
+        "    });\n" +
+        "cf.thenApply(result -> result * 2)\n" +
+        "  .thenAccept(result -> \n" +
+        "      System.out.println(result))\n" +
+        "  .join();  // 84\n\n" +
+        "// Комбинирование\n" +
+        "CompletableFuture<Integer> cf1 = \n" +
+        "    CompletableFuture.supplyAsync(() -> 10);\n" +
+        "CompletableFuture<Integer> cf2 = \n" +
+        "    CompletableFuture.supplyAsync(() -> 20);\n" +
+        "cf1.thenCombine(cf2, (a, b) -> a + b)\n" +
+        "   .thenAccept(System.out::println);  // 30"
+    );
+    tvOutput.setText(
+        "Future:\n" +
+        "Результат: 42 (через 1 секунду)\n\n" +
+        "CompletableFuture:\n" +
+        "42 → 84 (thenApply)\n" +
+        "Вывод: 84\n\n" +
+        "Комбинирование:\n" +
+        "10 + 20 = 30"
+    );
+    tvAnalogy.setText(
+        "Аналогии:\n" +
+        "• **Future** = Квитанция из химчистки (придёте позже за результатом) 🧾\n" +
+        "• **CompletableFuture** = Курьер, который привезёт и сразу обработает \n\n" +
+        "**Future:**\n" +
+        "— Получили квитанцию\n" +
+        "— Ждём (блокируем)\n" +
+        "— Забираем результат\n\n" +
+        "**CompletableFuture:**\n" +
+        "— Заказали\n" +
+        "— Продолжаем работу\n" +
+        "— Callback когда готово"
+    );
+    break;
+
+case 74: // Синхронизаторы
+    tvTitle.setText("Синхронизаторы");
+    tvTheory.setText(
+        "**Синхронизаторы** — инструменты для координации потоков\n\n" +
+        "**CountDownLatch:**\n" +
+        "• Ожидание завершения нескольких задач\n" +
+        "• Счётчик уменьшается\n" +
+        "• Когда = 0, все продолжают\n" +
+        "• Нельзя сбросить\n\n" +
+        "**CyclicBarrier:**\n" +
+        "• Барьер для группы потоков\n" +
+        "• Все ждут, пока не соберутся\n" +
+        "• Можно использовать повторно\n\n" +
+        "**Semaphore:**\n" +
+        "• Ограничивает количество одновременных доступов\n" +
+        "• Как парковка с N местами\n" +
+        "• acquire() — занять место\n" +
+        "• release() — освободить место\n\n" +
+        "**Exchanger:**\n" +
+        "• Обмен данными между двумя потоками\n" +
+        "• Оба потока ждут друг друга\n" +
+        "• Обмениваются данными"
+    );
+    tvCode.setText(
+        "// CountDownLatch\n" +
+        "CountDownLatch latch = new CountDownLatch(3);\n" +
+        "for (int i = 0; i < 3; i++) {\n" +
+        "    new Thread(() -> {\n" +
+        "        // работа...\n" +
+        "        latch.countDown();\n" +
+        "    }).start();\n" +
+        "}\n" +
+        "latch.await();  // Ждать все 3 задачи\n" +
+        "System.out.println(\"Все завершены!\");\n\n" +
+        "// CyclicBarrier\n" +
+        "CyclicBarrier barrier = new CyclicBarrier(3);\n" +
+        "for (int i = 0; i < 3; i++) {\n" +
+        "    new Thread(() -> {\n" +
+        "        // работа...\n" +
+        "        barrier.await();  // Ждать остальных\n" +
+        "        // Продолжить вместе\n" +
+        "    }).start();\n" +
+        "}\n\n" +
+        "// Semaphore\n" +
+        "Semaphore semaphore = new Semaphore(2);  // 2 места\n" +
+        "semaphore.acquire();  // Занять\n" +
+        "// работа...\n" +
+        "semaphore.release();  // Освободить"
+    );
+    tvOutput.setText(
+        "CountDownLatch:\n" +
+        "Задача 1 завершена\n" +
+        "Задача 2 завершена\n" +
+        "Задача 3 завершена\n" +
+        "Все завершены! ✅\n\n" +
+        "CyclicBarrier:\n" +
+        "Поток 1 ждёт...\n" +
+        "Поток 2 ждёт...\n" +
+        "Поток 3 ждёт...\n" +
+        "Все собрались! Продолжаем!\n\n" +
+        "Semaphore:\n" +
+        "2 места занято, 3-й ждёт..."
+    );
+    tvAnalogy.setText(
+        "Аналогии:\n" +
+        "• **CountDownLatch** = Стартовый пистолет (все бегут после сигнала) 🔫\n" +
+        "• **CyclicBarrier** = Туристическая группа (все ждут отстающих) 👥\n" +
+        "• **Semaphore** = Парковка (N мест, остальные ждут) 🅿️\n" +
+        "• **Exchanger** = Обмен документами между коллегами 📄\n\n" +
+        "**Когда что использовать:**\n" +
+        "✅ CountDownLatch — ждать завершения задач\n" +
+        "✅ CyclicBarrier — синхронизировать этапы\n" +
+        "✅ Semaphore — ограничить доступ к ресурсу\n" +
+        "✅ Exchanger — обмен данными между парой потоков"
+    );
+    break;
+	
 	
 	
             default:

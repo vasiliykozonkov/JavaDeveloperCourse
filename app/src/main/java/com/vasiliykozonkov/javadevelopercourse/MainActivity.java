@@ -17,6 +17,14 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout module2TopicsLayout;
     private ImageView module2Arrow;
     private boolean module2Expanded = false;
+	
+	private LinearLayout module3TopicsLayout;
+    private ImageView module3Arrow;
+    private boolean module3Expanded = false;
+	
+    private LinearLayout module4TopicsLayout;
+    private ImageView module4Arrow;
+    private boolean module4Expanded = false;
 
     private String[] module1TopicsArray = {
         "1. Какие языки программирования бывают",
@@ -76,6 +84,34 @@ public class MainActivity extends AppCompatActivity {
         "21. Comparable и Comparator",
         "22. Лямбды и Stream API"
     };
+	
+	private String[] module3TopicsArray = {
+    "1. SOLID принципы",
+    "2. Паттерны проектирования",
+    "3. Git — углублённо",
+    "4. push, pull, fetch",
+    "5. Слияние веток: merge и rebase",
+    "6. cherry-pick и squash",
+    "7. patch и stash",
+    "8. reset и revert",
+    "9. Сборщики: Gradle и Maven",
+    "10. Этапы сборки Maven",
+    "11. Где хранятся зависимости"
+};
+
+    private String[] module4TopicsArray = {
+    "1. Многопоточность",
+    "2. Способы создания потоков",
+    "3. Виды состояния потоков",
+    "4. Ключевое слово volatile",
+    "5. Проблемы многопоточности",
+    "6. Пакет java.util.concurrent",
+    "7. Atomic переменные",
+    "8. Lock (блокировки)",
+    "9. Executors",
+    "10. Future и CompletableFuture",
+    "11. Синхронизаторы"
+};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,6 +185,70 @@ public class MainActivity extends AppCompatActivity {
             }
             module2Expanded = !module2Expanded;
         });
+		
+		// Инициализация Модуля 3
+module3TopicsLayout = findViewById(R.id.module3Topics);
+module3Arrow = findViewById(R.id.module3Arrow);
+
+for (int i = 0; i < module3TopicsArray.length; i++) {
+    TextView topicView = new TextView(this);
+    topicView.setText(module3TopicsArray[i]);
+    topicView.setTextSize(16);
+    topicView.setTextColor(android.graphics.Color.parseColor("#333333"));
+    topicView.setPadding(16, 12, 16, 12);
+    
+    final int index = 53 + i;  // Смещение! Модуль 3 начинается с индекса 53
+    topicView.setOnClickListener(v -> {
+        Intent intent = new Intent(MainActivity.this, TopicActivity.class);
+        intent.putExtra("topic_index", index);
+        startActivity(intent);
+    });
+    
+    module3TopicsLayout.addView(topicView);
+}
+
+findViewById(R.id.module3Header).setOnClickListener(v -> {
+    if (module3Expanded) {
+        module3TopicsLayout.setVisibility(View.GONE);
+        module3Arrow.setRotation(0);
+    } else {
+        module3TopicsLayout.setVisibility(View.VISIBLE);
+        module3Arrow.setRotation(180);
+    }
+    module3Expanded = !module3Expanded;
+});
+
+// Инициализация Модуля 4
+module4TopicsLayout = findViewById(R.id.module4Topics);
+module4Arrow = findViewById(R.id.module4Arrow);
+
+for (int i = 0; i < module4TopicsArray.length; i++) {
+    TextView topicView = new TextView(this);
+    topicView.setText(module4TopicsArray[i]);
+    topicView.setTextSize(16);
+    topicView.setTextColor(android.graphics.Color.parseColor("#333333"));
+    topicView.setPadding(16, 12, 16, 12);
+    
+    final int index = 64 + i;  // Смещение! Модуль 4 начинается с индекса 64
+    topicView.setOnClickListener(v -> {
+        Intent intent = new Intent(MainActivity.this, TopicActivity.class);
+        intent.putExtra("topic_index", index);
+        startActivity(intent);
+    });
+    
+    module4TopicsLayout.addView(topicView);
+}
+
+findViewById(R.id.module4Header).setOnClickListener(v -> {
+    if (module4Expanded) {
+        module4TopicsLayout.setVisibility(View.GONE);
+        module4Arrow.setRotation(0);
+    } else {
+        module4TopicsLayout.setVisibility(View.VISIBLE);
+        module4Arrow.setRotation(180);
+    }
+    module4Expanded = !module4Expanded;
+});
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Java Developer Course");
