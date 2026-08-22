@@ -18,8 +18,12 @@
         </activity>
         
         <!-- ДОБАВЬ ЭТУ СТРОКУ! mipmap/ic_launcher-->
-        <activity android:name=".TopicActivity" />
-        
+        <activity android:name=".TopicModule1" />
+        <activity android:name=".TopicModule2" />
+		<activity android:name=".TopicModule3" />
+	    <activity android:name=".TopicModule4" />
+        <activity android:name=".TopicModule5" />
+		
     </application>
 
 </manifest>
